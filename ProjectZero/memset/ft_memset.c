@@ -19,18 +19,20 @@ n – размер заполняемой части массива в байт�
 
 #include <unistd.h>
 #include <stdio.h>
+#include <string.h>
+#include <stddef.h>
 
-char ft_memset(char * destination, int c, size_t n)
+void *ft_memset(void * destination, int c, size_t n)
 {
 	unsigned int i;
-	char g;
+	char *g;
 
 	i = 0;
-	g = *destination;
+	g = destination;
 
 	while (i <= n - 1)
 	{
-		destination[i] = c;
+		g[i] = c;
 		i++;
 	}	
 	return (g);
@@ -39,9 +41,17 @@ char ft_memset(char * destination, int c, size_t n)
 int main()
 {
 	char str[] = "1234567890";
-	int d;
-	d = 6;
-	ft_memset(str, '1', d);
-	printf("Changing string - %s\n", str);
+	char str2[] = "1234567890";
+	int str3[] = {1,2,3,4,5,6,7,8};
+//	int str4[] = {1,2,3,4,5,6,7,8};
+
+	ft_memset(str, '7', 3);
+	ft_memset(str3, '7', 3);
+	printf("My Function - %s\n", str);
+	printf("My Function - %i\n", *str3);
+	//printf("%s\n", ft_memset(str2, '7', 2));
+	memset(str2, '7', 3);
+	printf("Original Memeset - %s\n", str2);	
+	//printf("Original Memeset - %s\n", memset(str2, '7', 2));
 	return (0);
 }
