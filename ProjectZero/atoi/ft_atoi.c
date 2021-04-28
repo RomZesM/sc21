@@ -8,6 +8,7 @@ int ft_atoi(const char *str);
 
 */
 #include <stdio.h>
+#include <stdlib.h>
 
 int ft_atoi(const char *str)
 
@@ -15,10 +16,12 @@ int ft_atoi(const char *str)
     int i;
     int c;
     int m;
+    
+    
     c = 0;
     m = 1;
     i = 0;
-    
+  
     while(str[c] != '\0')
         {    
             
@@ -30,9 +33,9 @@ int ft_atoi(const char *str)
                     }
             if(str[c] <= '9' && str[c] >= '0')    
                 i = i * 10 + (str[c] - '0');
-            if(str[c] > '9')
-                break;
-            c++; 
+            else
+            	break;       
+            c++;
         }        
     return (i * m);
 }    
@@ -40,9 +43,9 @@ int ft_atoi(const char *str)
 int main ()
 {
     
-    char str[300] = "\n\t---+-+-2147 4836f8";
+    const char str[300] = "z-21474836f8";
     
     printf("%i\n", ft_atoi(str));
-
+    printf("%i\n", atoi(str));
     return (0);
 }

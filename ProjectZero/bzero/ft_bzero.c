@@ -13,14 +13,14 @@ I void bzero(void * s , size_t  n );
 
 void ft_bzero(void * s, size_t n)
 {
-    unsigned int i;
+    size_t i;
     unsigned char *d;
 
     d = s;
     i = 0;
     while (i < n)
     {
-        d[i] = 0;
+        d[i] = '\0';
         i++;
     }
 }
@@ -28,7 +28,7 @@ void ft_bzero(void * s, size_t n)
 int main()
 {
     int l = 0;
-    int l1 = 0;
+    //int l1 = 0;
 
     char c[] = "aaaaa";
     int c1[] = {1,1,1,1,1};

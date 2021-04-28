@@ -25,16 +25,18 @@ n – размер заполняемой части массива в байт�
 
 void *ft_memset(void * destination, int c, size_t n)
 {
-	unsigned int i;
+	size_t i;
 	unsigned char *g;
+	unsigned char b;
 
 	i = 0;
-	g = destination;
+	g = (unsigned char *)destination;
+	b = (unsigned char)c;
 
 	while (i <= n)
 	{
-		//g[i] = c;
-		*(g + i) = c;
+		g[i] = b;
+		//*(g + i) = c;
 		i++;
 	}	
 	return (g);

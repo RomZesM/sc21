@@ -2,6 +2,7 @@
 Функция strlcpy копирует из строки src в буфер dst не более чем size - 1 символов 
 и гарантированно устанавливает в конец строки нулевой символ. strlcat делает то же самое, 
 однако копирование ведётся не в начало dst, а таким образом, чтобы продолжить строку, на которую указывает dst.
+В случае, когда dst указывает на нуль-символ, поведение функций эквивалентно.
 
 strlcat возвращает суммарную длину строк по адресам src и dst. 
 Возвращаемое значение не зависит от того, удалось скопировать строку полностью или нет; 
@@ -25,16 +26,36 @@ size_t ft_strlen (const char *str)
 }
 
 
-size_t ft_strlcat (char *dst, const char *src, size_t dstsize)
+size_t ft_strlcat (char *dst, const char *src, size_t dstsize) //dstsize количество символов-1 которые надо дописать в *dst из *src
 {
 	size_t i;
+	size_t c;
 
-	i = 0;
-	while(i < size)
+	i = ft_strlen(dst);//размер dst, чтобы записывать в конец массива
+	c = 0;
+	while(c < dstsize)
 		{
-			dst[i] = src[i];
-			i++;
+			dst[i] = src[c];
+			c++;
 		}
 	dst[i] = '\0'; //добавляем в конец строки символ \0
-	return (ft_strlen(src));
+	return (i + ft_strlen(src));
+}
+
+int main(void)
+{  
+	char  buf[10] = "aaa";
+	const char *src = "01010101010101010101"; // неизменяемый массив
+	size_t sz = 0;
+
+   printf("строка: \"%s\"\n\n", src);
+   printf("буфер перед копированием: \"%s\"\n", buf);
+
+   sz = ft_strlcat(buf, src, sizeof(buf));    
+   if (sz >= sizeof(buf))           // пример определения усечения строки      
+      printf("обнаружено усечение строки с %zu до %lu символов !\n", sz, sizeof(buf)-1);
+
+   printf("буфер после копирования:  \"%s\"\n", buf);
+
+   return 0;
 }
