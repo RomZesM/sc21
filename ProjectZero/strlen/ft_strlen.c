@@ -15,7 +15,7 @@ size_t ft_strlen (const char *str)
 
 int main()
 {
-	const char x[15] = "1234567800";
+	const char x[15] = "123456780";
 
 	printf("m-Dlinna stroki %s - %d simvolov\n", x, (int)ft_strlen(x));
 	printf("o-Dlinna stroki %s - %d simvolov\n", x, (int)strlen(x));
