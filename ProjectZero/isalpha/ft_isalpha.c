@@ -7,8 +7,8 @@ DESCRIPTION
      representable as an unsigned char or the value of EOF.
 
 RETURN VALUES
-     The isalpha() function returns zero if the character tests false and returns non-zero if the character tests true. 
-	
+     The isalpha() function returns zero if the character tests false and returns non-zero if the character tests true.
+
 */
 
 #include <ctype.h>
@@ -20,14 +20,14 @@ int ft_isalpha(int c)
 		return (1);
 	if(c >= 'a'  && c <= 'z')
 		return (1);
-	else 
+	else
 	return 0;
 }
 
 int main()
 {
 	char c[] = "1";
-	
+
 	if(ft_isalpha(c[0]))
 		printf("Это буква\n");
 	else
@@ -41,4 +41,4 @@ int main()
 	return (0);
 
 
-}	
+}
