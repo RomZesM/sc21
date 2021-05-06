@@ -1,6 +1,6 @@
 #include "libft.h"
 
-void	*ft_memcpy(void *destination, const void *source, size_t n)
+void	*ft_memcpy (void *destination, const void *source, size_t n)
 {
 	char			*d;
 	const char		*s;
@@ -9,6 +9,8 @@ void	*ft_memcpy(void *destination, const void *source, size_t n)
 	d = destination;
 	s = source;
 	c = 0;
+	if (!s || !n || !source)
+		return (NULL);
 	while (c < n)
 	{
 		d[c] = s[c];

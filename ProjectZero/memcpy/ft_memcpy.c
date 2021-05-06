@@ -30,6 +30,8 @@ void	*ft_memcpy (void *destination, const void *source, size_t n)
 	d = destination;
 	s = source;
 	c = 0;
+	if (!s || !n)
+		return (NULL);
 	while (c < n)
 	{
 		d[c] = s[c];
