@@ -6,8 +6,10 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	size_t	c1;
 	size_t	c2;
 
+	if (!s1 || !s2)
+		return (NULL);
 	cont = (char *)malloc(sizeof(s1) * (ft_strlen(s1) + 1));
-	if (!cont)
+	if (!cont )
 		return (NULL);
 	c1 = -1;
 	c2 = -1;
@@ -19,5 +21,6 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	{
 		*(cont + c1++) = *(s2 + c2);
 	}
+	*(cont + c1) = '\0';
 	return (cont);
 }

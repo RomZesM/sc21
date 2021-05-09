@@ -16,39 +16,33 @@ RETURN VALUES
 #include <stdio.h>
 #include <string.h>
 
-void * ft_memmove(void *dst, const void *src, size_t len)
+#include "libft.h"
+
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	size_t i;
-	unsigned char *d;
-	unsigned char *s;
-	
+	unsigned char	*d;
+	unsigned char	*s;
+
 	d = (unsigned char *)dst;
 	s = (unsigned char *)src;
-	i = 0;
-
 	if (d < s)
-		{
-			while(i < len)
-				{
-					d[i] = s[i];
-					i++;	
-				}
-			return(d);
-		}
-	else
-		while(len--)
+	{
+		ft_memcpy(dst, src, len);
+	}
+	else if (s < d)
+		while (len--)
 			d[len] = s[len];
-		return(d);
+	return (d);
 }
 
 int main (void)
 {
    // Исходный массив данных
 	unsigned char src[10]= "000006789";
-	unsigned char src2[10]= "000006789";	
+	unsigned char src2[10]= "000006789";
    // Вывод массива src на консоль
 	printf ("src old: %s\n",src);
-	
+
    // Копируем 3 байт
 	ft_memmove(&src[4], &src[7], 2);
 	memmove (&src2[4], &src2[7], 2);

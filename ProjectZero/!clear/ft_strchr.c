@@ -1,9 +1,9 @@
 #include "libft.h"
 
-char	*ft_strchr(const char *str, int ch)
+char	*ft_strchr (const char *str, int ch)
 {
-	int			i;
-	char		*b;
+	int		i;
+	char	*b;
 
 	b = (char *)str;
 	i = 0;
@@ -14,5 +14,7 @@ char	*ft_strchr(const char *str, int ch)
 		else
 			i++;
 	}
+	if (b[i] == ch)
+		return (&b[i]);
 	return (NULL);
 }

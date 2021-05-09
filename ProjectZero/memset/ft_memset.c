@@ -38,7 +38,7 @@ void	*ft_memset(void *destination, int c, size_t n)
 		g[i] = b;
 		i++;
 	}
-	return ((unsigned char *)g);
+	return (g);
 }
 
 int main()

@@ -13,14 +13,14 @@ Description Allocates (with malloc(3)) and returns a new string, which is the re
 
 size_t ft_strlen (const char *str)
 {
-	size_t i; 
+	size_t i;
 
 	i = 0;
 	while(str[i] != '\0')
 		{
 			i++;
 		}
-	return i;	
+	return i;
 }
 
 
@@ -44,6 +44,7 @@ char *ft_strjoin(char const *s1, char const *s2)
 		{
 			*(cont + c1++) = *(s2 + c2); //постфиксный + имеет приоритет над обычным плюсом, значит с1 сначала увеличивается, затем прибавляется к count
 		}
+	*(cont + c1) = "\0";
 	return (cont);
 }
 

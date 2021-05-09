@@ -4,18 +4,19 @@ void	*ft_memcpy (void *destination, const void *source, size_t n)
 {
 	char			*d;
 	const char		*s;
-	unsigned int	c;
+	size_t	c;
 
 	d = destination;
 	s = source;
 	c = 0;
-	if (!s || !n || !source)
-		return (NULL);
-	while (c < n)
+	if (source != 0 || destination != 0)
 	{
-		d[c] = s[c];
-		c++;
+		while (c < n)
+		{
+			d[c] = s[c];
+			c++;
+		}
+		return (d);
 	}
-	d[c] = '\0';
-	return (d);
+	return (NULL);
 }

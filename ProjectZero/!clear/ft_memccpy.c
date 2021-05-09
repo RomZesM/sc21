@@ -5,7 +5,7 @@ void	*ft_memccpy(void *destination, const void *source, int c, size_t n)
 	unsigned char		*d;
 	unsigned char		*s;
 	unsigned char		symbol;
-	unsigned int		i;
+	size_t				i;
 
 	symbol = (unsigned char)c;
 	d = (unsigned char *)destination;
@@ -14,9 +14,9 @@ void	*ft_memccpy(void *destination, const void *source, int c, size_t n)
 	while (i < n)
 	{
 		d[i] = s[i];
-		if (s[i] == symbol)
-			return (&d[i]);
 		i++;
+		if (s[i - 1] == symbol)
+			return (&d[i]);
 	}
-	return (d);
+	return ((void *) 0);
 }
