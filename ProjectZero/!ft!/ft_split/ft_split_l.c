@@ -1,18 +1,3 @@
-/*
-char **ft_split(char const *s, char c);
--
-		#1. The string to be split.
-		#2. The delimiter character.
-The array of new strings resulting from the split.
-NULL if the allocation fails.
-malloc, free
-\
-получаем строку типа *Это*важное*слово*, * разделитель, разделить на отдельные слова, и записатьт каждое в массив, и вернуть
-
-Allocates (with malloc(3)) and returns an array of strings obtained by splitting ’s’ using the
-character ’c’ as a delimiter. The array must be ended by a NULL pointer.
-*/
-
 #include <string.h>
 #include <unistd.h>
 #include <stdlib.h>
@@ -29,45 +14,6 @@ size_t	ft_strlen(const char *s)
 		s++;
 	}
 	return (i);
-}
-
-int	proverka(char const *set, char p)
-{
-	int	i;
-
-	i = 0;
-	while (set[i])
-	{
-		if (set[i] == p)
-			return (1);
-		i++;
-	}
-	return (0);
-}
-
-char	*ft_strtrim(char const *s1, char const *set)
-{
-	size_t	begin;
-	size_t	end;
-	size_t	i;
-	char	*trim;
-
-	begin = 0;
-	i = 0;
-	if (!s1 || !set)
-		return (NULL);
-	while (s1[begin] && proverka(set, s1[begin]))
-		begin++;
-	end = ft_strlen(s1);
-	while (end > begin && proverka(set, s1[end - 1]))
-		end--;
-	trim = (char *)malloc((end - begin) + 1);
-	if (!trim)
-		return (NULL);
-	while (begin < end)
-		*(trim + i++) = *(s1 + begin++);
-	*(trim + i) = '\0';
-	return (trim);
 }
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
@@ -117,53 +63,38 @@ void	ft_freemem(int j, char **arr)
 	free(arr);
 }
 
-char	*ft_strchr (const char *str, int ch)
-{
-	int		i;
-	char	*b;
 
-	b = (char *)str;
-	i = 0;
-	while (b[i] != '\0')
-	{
-		if (b[i] == ch)
-			return (&b[i]);
-		else
-			i++;
-	}
-	if (b[i] == ch)
-		return (&b[i]);
-	return (NULL);
-}
 
 char **ft_split(char const *s, char c)
 {
 	int i; //счетчик для массива
+	int word_counter; //счетчик для количества слов
 	int n;//счетчик длинны слова
 	int h;//начало слова
-	int j;//счетчик для записи слов в массив (номер строки)
+	int j;//счечик для записи слов в массив (номер строки)
 	char **arr;
 
+	i = 0;
 	if (!c || !s)
 		return (NULL);
-	if (!(arr = (char**)malloc(sizeof(int*) * (ft_count_words(s, c) + 1))))
+	word_counter = ft_count_words(s, c);
+	//маллочим память под **char зная количество слов и 1 под 0
+	if (!(arr = (char**)malloc(sizeof(int*) * (word_counter + 1))))
 		return (NULL);
-	i = 0;
 	j = 0;
-
 	while (s[i])
 	{
 		n = 0;
-		while (s[i] == c)
+		while (s[i] == c) //пока разделитель идем дальше
 			i++;
 		h = i; //дошагали до буквы, запомнили - это начало слова
-		while (s[i] != c && s[i] != '\0')//идем пока не встретим разделитель
+		while (s[i] != c && s[i] != '\0')//идем пока не закончится слово
 		{
 			n++; //счетчик длинны слова
 			i++;
 		}
 		if (n != 0) //если слова длиннее 0
-			{
+		{
 			if (!(arr[j] = (char *)malloc(n))) //выделяем память, если не выделилось, то чистим
 			{
 				ft_freemem(j, arr);

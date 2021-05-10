@@ -139,10 +139,13 @@ char	*ft_strchr (const char *str, int ch)
 char **ft_split(char const *s, char c)
 {
 	int i; //счетчик для массива
-	int n;//счетчик длинны слова
-	int h;//начало слова
+	//int n;//счетчик длинны слова
+//	int h;//начало слова
 	int j;//счетчик для записи слов в массив (номер строки)
 	char **arr;
+	char *copy;
+	char *copy2;
+	char *set;
 
 	if (!c || !s)
 		return (NULL);
@@ -150,9 +153,26 @@ char **ft_split(char const *s, char c)
 		return (NULL);
 	i = 0;
 	j = 0;
-
-	while (s[i])
+	printf("s - %s\n", s);
+	copy = (char *)s;
+	copy2 = (char *)s;
+	printf("copy - %s", copy);
+	set = NULL;
+	set = &c;
+	printf("set - %s", set);
+	while (i < ft_count_words(s, c))
 	{
+		copy = ft_strtrim(s, set);
+		printf("s- %s", s);
+		copy2 = ft_strchr(copy, c);
+		arr[i] = ft_substr(copy, 0, copy - s);
+		copy = copy2;
+		i++;
+	}
+	//arr[j] = NULL; //добавляем 0 в конец
+	return (arr);
+}
+/*
 		n = 0;
 		while (s[i] == c)
 			i++;
@@ -176,14 +196,14 @@ char **ft_split(char const *s, char c)
 	arr[j] = NULL; //добавляем 0 в конец
 	return (arr);
 }
-
+*/
 int	main()
 {
 	char **str;
 	int i;
-
+	const char *s = "ololol  ghg dlskj";
 	i = 0;
-	str = ft_split("ololol  ghg dlskj  ", ' ');
+	str = ft_split(s, ' ');
 	while(i < 3)
 		{
 		printf("%s\n", str[i]);

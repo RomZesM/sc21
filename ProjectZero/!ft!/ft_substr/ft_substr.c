@@ -15,21 +15,21 @@ The substring begins at index ’start’ and is of maximum size ’len’.
 #include <stdio.h>
 #include <stdlib.h>
 
-char *ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char *sub;
-	size_t i;
+	char	*sub;
+	size_t	i;
 
-	sub = (char *)malloc(sizeof(s) * len);
-	if(!sub)
+	sub = (char *)malloc(len + 1);
+	if (!sub || !s)
 		return (NULL);
 	i = 0;
-	while (i < len)
-		{
-			sub[i] = s[start];
-			i++;
-			start++;
-		}
+	while (i < len && start < ft_strlen(s))
+	{
+		sub[i] = s[start];
+		i++;
+		start++;
+	}
 	sub[i] = '\0';
 	return (sub);
 }
@@ -37,7 +37,7 @@ char *ft_substr(char const *s, unsigned int start, size_t len)
 int main()
 {
 	const char f[] = "YUY000777";
-	
+
 	printf("Returnd sub - %s\n", ft_substr(f, 4, 4));
 
 	return 0;

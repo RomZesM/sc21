@@ -23,16 +23,14 @@ void	ft_bzero(void *s, size_t n)
 	}
 }
 
-void * ft_calloc(size_t count, size_t size)
+void	*ft_calloc(size_t count, size_t size)
 {
-	char *ptr;
-
-	ptr = (char *)malloc(count * size); //выделяем через маллок count элементов, размером size, в функцию можно отправить  sizeof(char)
-	if(!ptr)
-		return NULL;
-	ft_bzero(ptr, count);
-
-	return(ptr);
+	void	*ptr;
+	ptr = malloc(count * size);
+	if	(!ptr)
+		return (NULL);
+	ft_bzero (ptr, count * size);
+	return (ptr);
 }
 
 int main()

@@ -5,11 +5,11 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	char	*sub;
 	size_t	i;
 
-	sub = (char *)malloc(sizeof(s) * len);
-	if (!sub)
+	sub = (char *)malloc(len + 1);
+	if (!sub || !s)
 		return (NULL);
 	i = 0;
-	while (i < len)
+	while (i < len && start < ft_strlen(s))
 	{
 		sub[i] = s[start];
 		i++;

@@ -12,23 +12,24 @@ External functs. write
 #include <unistd.h>
 #include <fcntl.h>
 
-void ft_putstr_fd(char *s, int fd)
+void	ft_putstr_fd(char *s, int fd)
 {
-	int i;
+	int	i;
+
 	i = 0;
-	while(s[i] != '\0')
-		{
-			write(fd, &s[i], 1);
-			i++;
-		}
+	while (s && s[i] != '\0')
+	{
+		write(fd, &s[i], 1);
+		i++;
+	}
 }
 
 int main()
 {
 	int file;
 	char *c = "Probnaya Stroka!";
-	
-	
+
+
 	file = open("test", O_RDWR);
 	ft_putstr_fd(c, file);
 	return(0);

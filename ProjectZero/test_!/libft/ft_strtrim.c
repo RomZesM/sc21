@@ -23,15 +23,18 @@ char	*ft_strtrim(char const *s1, char const *set)
 
 	begin = 0;
 	i = 0;
+	if (!s1 || !set)
+		return (NULL);
 	while (s1[begin] && proverka(set, s1[begin]))
 		begin++;
 	end = ft_strlen(s1);
 	while (end > begin && proverka(set, s1[end - 1]))
 		end--;
-	trim = (char *)malloc(sizeof(trim) * ((end - begin) + 1));
+	trim = (char *)malloc((end - begin) + 1);
 	if (!trim)
 		return (NULL);
 	while (begin < end)
 		*(trim + i++) = *(s1 + begin++);
+	*(trim + i) = '\0';
 	return (trim);
 }

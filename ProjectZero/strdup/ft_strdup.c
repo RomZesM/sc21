@@ -20,26 +20,26 @@ size_t ft_strlen (const char *str)
 		{
 			i++;
 		}
-	return i;	
+	return i;
 }
 
-char * ft_strdup(const char *s1)
+char	*ft_strdup(const char *s1)
 {
-	char * ptr;
-	size_t i;
-	size_t size_m;
+	char	*ptr;
+	size_t	i;
+	size_t	size_m;
 
 	size_m = ft_strlen(s1);
-	ptr = (char *)malloc(size_m * sizeof(s1));
-	if(!ptr)
-		return NULL;
+	ptr = (char *)malloc(size_m + 1);
+	if (!ptr)
+		return (NULL);
 	i = 0;
 	while (i < size_m)
-		{
-			ptr[i] = s1[i];
-			i++;
-		}
-	ptr[i] = '\0'; //не уверен что надо это добавлять
+	{
+		ptr[i] = s1[i];
+		i++;
+	}
+	ptr[i] = '\0';
 	return (ptr);
 }
 
@@ -47,7 +47,7 @@ int main()
 {
 	char str[10] = "Paralel77";
 	char * s;
-	
+
 	s = ft_strdup(str);
 
 	printf("Returned copy %s\n", s);
